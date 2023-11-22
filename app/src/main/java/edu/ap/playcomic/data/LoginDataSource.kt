@@ -1,6 +1,8 @@
 package edu.ap.playcomic.data
 
+import com.google.firebase.auth.FirebaseAuth
 import edu.ap.playcomic.data.model.LoggedInUser
+import kotlinx.coroutines.tasks.await
 import java.io.IOException
 
 /**
@@ -8,17 +10,22 @@ import java.io.IOException
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
-            // TODO: handle loggedInUser authentication
-            val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
-            return Result.Success(fakeUser)
+    suspend fun login(username: String, password: String): Result<LoggedInUser> {
+        return try {
+            val authResult = FirebaseAuth.getInstance()
+                .signInWithEmailAndPassword(username, password)
+                .await()
+
+            val firebaseUser = authResult.user ?: throw Exception("User not found")
+            val loggedInUser = LoggedInUser(firebaseUser.uid, firebaseUser.displayName ?: "Anonymous")
+
+            Result.Success(loggedInUser)
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            Result.Error(IOException("Error logging in", e))
         }
     }
 
     fun logout() {
-        // TODO: revoke authentication
+        FirebaseAuth.getInstance().signOut()
     }
 }

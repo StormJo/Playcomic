@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623600669649",
+    "project_id": "playcomic-f6552",
+    "storage_bucket": "playcomic-f6552.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623600669649:android:000a58256a09839813c6f0",
+        "android_client_info": {
+          "package_name": "edu.ap.playcomic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC-bm4uKaSm_mQSkdgn8gJzc7nfZ2xZQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

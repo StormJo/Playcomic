@@ -1,6 +1,7 @@
 package edu.ap.playcomic.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -62,11 +63,15 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+
+                setResult(Activity.RESULT_OK)
+                finish()
+                //val intent = Intent(Dashbo)
             }
-            setResult(Activity.RESULT_OK)
+            //setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-            finish()
+            //finish()
         })
 
         username.afterTextChanged {
