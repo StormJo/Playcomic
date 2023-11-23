@@ -2,6 +2,7 @@ package edu.ap.playcomic
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,6 +19,8 @@ private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
+
          binding = ActivityMainBinding.inflate(layoutInflater)
          setContentView(binding.root)
 
@@ -31,7 +34,7 @@ private lateinit var binding: ActivityMainBinding
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
