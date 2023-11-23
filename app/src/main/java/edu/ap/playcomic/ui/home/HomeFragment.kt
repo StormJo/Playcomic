@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import edu.ap.playcomic.databinding.FragmentHomeBinding
@@ -21,17 +23,12 @@ private var _binding: FragmentHomeBinding? = null
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+      return ComposeView(requireContext()).apply {
+          setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+          setContent {
+          }
+      }
 
-    _binding = FragmentHomeBinding.inflate(inflater, container, false)
-    val root: View = binding.root
-
-    val textView: TextView = binding.textHome
-    homeViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
-    }
-    return root
   }
 
 override fun onDestroyView() {
