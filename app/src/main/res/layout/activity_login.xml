@@ -43,7 +43,7 @@
             android:contentDescription="@string/app_name"
             android:scaleType="fitStart"
             tools:ignore="ExtraText,MissingConstraints"
-            tools:srcCompat="@drawable/playcomiclogo" />
+            android:src="@drawable/playcomiclogo" />
 
         <TextView
             android:id="@+id/textView2"
